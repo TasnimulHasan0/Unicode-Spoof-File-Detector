@@ -29,7 +29,7 @@ This Python script detects and blocks potentially dangerous files that use Unico
 *   Run:
 
     ```bash
-    git clone [https://github.com/](https://github.com/)[YourUsername]/unicode-spoof-detector.git
+    git clone https://github.com/TasnimulHasan0/Unicode-Spoof-File-Detector
     cd unicode-spoof-detector
     ```
 
@@ -45,7 +45,6 @@ This Python script detects and blocks potentially dangerous files that use Unico
 
 **5. Install and Start Service (Admin):**
 
-*   Open CMD/PowerShell as admin.
 *   Run:
 
     ```bash
