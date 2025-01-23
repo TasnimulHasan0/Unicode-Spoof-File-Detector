@@ -12,50 +12,64 @@ This Python script detects and blocks potentially dangerous files that use Unico
 *   **Automatic Startup:** Configures the service to start automatically on boot.
 
 ## Installation for Windows Users
+## Installation for Windows Users
 
-**1. Install Python and Required Libraries:**
+**1. Install Python (Admin):**
 
-*   Download the latest Python version for Windows from: https://www.python.org/downloads/windows/
-*   During installation, **ensure you check "Add Python 3.x to PATH".**
-*   Open a command prompt as administrator
-*   Install required libraries:
+*   Download Python: https://www.python.org/downloads/windows/ (Check "Add Python 3.x to PATH")
+
+**2. Install Git (If needed):**
+
+*   https://git-scm.com/download/win
+
+**3. Clone the Repository:**
+
+*   Open CMD/PowerShell.
+*   `cd C:\projects` (or your preferred directory)
+*   Run:
 
     ```bash
-    pip install pywin32 python-magic
+    git clone [https://github.com/](https://github.com/)[YourUsername]/unicode-spoof-detector.git
+    cd unicode-spoof-detector
     ```
 
-**2. Download the Script**
+**4. Install Dependencies (Admin):**
 
-*   Download the script files from the GitHub repository
+*   Open CMD/PowerShell as admin.
+*   `cd C:\projects\unicode-spoof-detector` (or your path)
+*   Run:
 
-**3. Install and Start the Service (Requires Admin):**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-*   Open a command prompt as administrator.
-*   Navigate to the script's directory (if you downloaded it): `cd C:\unicode_spoof_detector` (replace with your path).
-*   Install the service:
+**5. Install and Start Service (Admin):**
+
+*   Open CMD/PowerShell as admin.
+*   Run:
 
     ```bash
     python unicode_spoof_detector.py install
-    ```
-
-*   Start the service:
-
-    ```bash
     python unicode_spoof_detector.py start
     ```
 
-**4. Set Automatic Startup:**
+**6. Set Auto-Start (Admin):**
 
-*   To make the service start automatically on boot:
+*   Run:
 
     ```bash
     python unicode_spoof_detector.py set_auto_start
     ```
 
-**Important Notes:**
+**Alternative: Manual Service Management (Admin for some actions):**
 
-*   **Admin privileges are required for installing, starting/stopping the service, setting auto-start, and blocking file execution (which the service does).** Run your command prompt as administrator for these actions.
-*   
+*   Open Services app (`services.msc`).
+*   Find "UnicodeSpoofDetector".
+*   Right-click to manage.
+
+**Important:** Admin privileges are required for service operations and blocking file execution.
+
+
 ## Usage
 
 The detector runs as a background service. Once installed and started, it automatically monitors the Downloads folder. If a suspicious file is detected, a warning popup will appear, and the file's execution will be blocked.
