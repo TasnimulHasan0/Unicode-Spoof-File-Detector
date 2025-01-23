@@ -44,7 +44,8 @@ This Python script detects and blocks potentially dangerous files that use Unico
 
 The detector runs as a background service. Once installed and started, it automatically monitors the Downloads folder. If a suspicious file is detected, a warning popup will appear, and the file's execution will be blocked.
 
-## Uninstallation
+<details>
+<summary>Uninstallation</summary>
 
 1.  **Stop the Service:**
 
@@ -62,16 +63,22 @@ The detector runs as a background service. Once installed and started, it automa
 
     ```bash
     cd ..
-    rm -rf unicode-spoof-detector
+    rm -rf unicode_spoof_detector
     ```
 
-## Customization
+</details>
+
+<details>
+<summary>Customization</summary>
 
 *   **`suspicious_unicode_patterns`:** You can modify the regular expressions in this list within the `UnicodeSpoofDetector` class to refine the Unicode character detection.
 *   **`dangerous_extensions`:** This list contains the file extensions considered potentially dangerous. You can add or remove extensions as needed.
 *   **`download_folder`:** The default monitored folder is the user's Downloads directory. You can change this by passing a different path to the `UnicodeSpoofDetector` constructor.
 
-## Issues
+</details>
+
+<details>
+<summary>Issues</summary>
 
 If you encounter any issues or have suggestions for improvements, please open an issue on GitHub. When reporting an issue, please provide:
 
@@ -79,7 +86,10 @@ If you encounter any issues or have suggestions for improvements, please open an
 *   **The operating system you are using.**
 *   **Any relevant error messages or logs.**
 
-## Contributions
+</details>
+
+<details>
+<summary>Contributions</summary>
 
 Contributions are welcome! If you would like to contribute to this project, please follow these steps:
 
@@ -88,6 +98,8 @@ Contributions are welcome! If you would like to contribute to this project, plea
 3.  **Make your changes and commit them.**
 4.  **Push your changes to your fork.**
 5.  **Submit a pull request.**
+
+</details>
 
 ## License
 
