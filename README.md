@@ -12,7 +12,6 @@ This Python script detects and blocks potentially dangerous files that use Unico
 *   **Automatic Startup:** Configures the service to start automatically on boot.
 
 ## Installation for Windows Users
-## Installation for Windows Users
 
 **1. Install Python (Admin):**
 
