@@ -11,35 +11,51 @@ This Python script detects and blocks potentially dangerous files that use Unico
 *   **Windows Service:** Runs as a Windows service for continuous background monitoring.
 *   **Automatic Startup:** Configures the service to start automatically on boot.
 
-## Installation
+## Installation for Windows Users
 
-1.  **Dependencies:** Ensure you have Python 3 installed. Install the required packages:
+**1. Install Python and Required Libraries:**
+
+*   Download the latest Python version for Windows from: https://www.python.org/downloads/windows/
+*   During installation, **ensure you check "Add Python 3.x to PATH".**
+*   Open a command prompt as administrator
+*   Install required libraries:
 
     ```bash
     pip install pywin32 python-magic
     ```
 
-    You may need to install `libmagic` separately depending on your system. On Windows, you can download a pre-compiled version and add its DLLs to your system's PATH.
+**2. Download the Script**
 
-2.  **Clone the Repository:**
+*   Download the script files from the GitHub repository
 
-    ```bash
-    git clone [https://github.com/](https://github.com/)[YourUsername]/unicode-spoof-detector.git
-    cd unicode-spoof-detector
-    ```
+**3. Install and Start the Service (Requires Admin):**
 
-3.  **Install the Service:**
+*   Open a command prompt as administrator.
+*   Navigate to the script's directory (if you downloaded it): `cd C:\unicode_spoof_detector` (replace with your path).
+*   Install the service:
 
     ```bash
     python unicode_spoof_detector.py install
     ```
 
-4.  **Start the Service:**
+*   Start the service:
 
     ```bash
     python unicode_spoof_detector.py start
     ```
 
+**4. Set Automatic Startup:**
+
+*   To make the service start automatically on boot:
+
+    ```bash
+    python unicode_spoof_detector.py set_auto_start
+    ```
+
+**Important Notes:**
+
+*   **Admin privileges are required for installing, starting/stopping the service, setting auto-start, and blocking file execution (which the service does).** Run your command prompt as administrator for these actions.
+*   
 ## Usage
 
 The detector runs as a background service. Once installed and started, it automatically monitors the Downloads folder. If a suspicious file is detected, a warning popup will appear, and the file's execution will be blocked.
