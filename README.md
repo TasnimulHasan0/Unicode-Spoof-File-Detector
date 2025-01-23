@@ -44,6 +44,19 @@ By default, the tool monitors the `Downloads` folder. To monitor additional or d
    ```python
    self.download_folder = os.path.expanduser('~\\Desktop')
 ---
+<details>
+<summary><strong>Add/Remove Dangerous File Extensions</strong></summary>
+
+### Customize Dangerous File Extensions
+To modify the list of file extensions considered dangerous:
+
+1. Open the `unicode-spoof-detector.py` file.
+2. Locate the `self.dangerous_extensions` list inside the `UnicodeSpoofDetector` class.
+3. Add or remove extensions as needed.
+
+For example:
+```python
+self.dangerous_extensions = ['.exe', '.bat', '.cmd', '.vbs', '.ps1', '.msi', '.scr', '.jar', '.js']
 
 ## Prerequisites
 1. **Python 3.8 or later** installed on your system.
