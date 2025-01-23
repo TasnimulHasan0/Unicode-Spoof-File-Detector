@@ -1,47 +1,117 @@
 # Unicode Spoof File Detector
 
-The **Unicode Spoof File Detector** is a Python-based security tool that monitors your system for files containing suspicious Unicode characters, often used to spoof file extensions. It blocks these files from execution and alerts the user, helping to prevent malicious activity.
-
----
+This Python script detects and blocks potentially dangerous files that use Unicode characters to spoof file extensions, commonly used in phishing and malware distribution. It monitors the Downloads folder and alerts the user if a suspicious file is found.
 
 ## Features
-- Detects filenames with suspicious Unicode characters (e.g., zero-width spaces, bidirectional controls).
-- Verifies that file types match their extensions (e.g., `.exe` files are actually executables).
-- Blocks execution of spoofed or dangerous files by modifying their permissions.
-- Continuously monitors the `Downloads` folder (configurable).
-- Operates as a Windows service, running silently in the background.
-- Auto-starts on system boot once installed as a service.
 
----
+*   **Unicode Character Detection:** Identifies files with suspicious Unicode characters in their names, often used to disguise file types.
+*   **File Type Verification:** Uses `libmagic` to verify the actual file type and compares it against the apparent extension.
+*   **Real-time Monitoring:** Continuously monitors the Downloads folder for new files.
+*   **Blocking Execution:** Prevents the execution of detected spoofed files by modifying their access control lists (ACLs).
+*   **Windows Service:** Runs as a Windows service for continuous background monitoring.
+*   **Automatic Startup:** Configures the service to start automatically on boot.
 
-## How It Works
-1. **Suspicious Unicode Detection:**
-   - Scans filenames for Unicode patterns commonly used in spoofing attacks.
-   - Examples of blocked characters include:
-     - Zero-width spaces (`\u200B-\u200D`)
-     - Bidirectional controls (`\u202A-\u202E`)
-     - Non-ASCII characters (`[^\x00-\x7F]`).
+## Installation
 
-2. **File Type Verification:**
-   - Uses the `python-magic` library to ensure the file type matches its extension.
-   - Protects against files that disguise themselves (e.g., a `.docx` file that is actually an executable).
+1.  **Dependencies:** Ensure you have Python 3 installed. Install the required packages:
 
-3. **Blocking Execution:**
-   - Prevents execution by removing execute permissions via Windows security descriptors.
+    ```bash
+    pip install pywin32 python-magic
+    ```
 
-4. **Service Integration:**
-   - Registers itself as a Windows service for seamless background operation.
-   - Configures the service to auto-start on system boot.
+    You may need to install `libmagic` separately depending on your system. On Windows, you can download a pre-compiled version and add its DLLs to your system's PATH.
 
----
+2.  **Clone the Repository:**
+
+    ```bash
+    git clone [https://github.com/](https://github.com/)[YourUsername]/unicode-spoof-detector.git
+    cd unicode-spoof-detector
+    ```
+
+3.  **Install the Service:**
+
+    ```bash
+    python unicode_spoof_detector.py install
+    ```
+
+4.  **Start the Service:**
+
+    ```bash
+    python unicode_spoof_detector.py start
+    ```
+
+## Usage
+
+The detector runs as a background service. Once installed and started, it automatically monitors the Downloads folder. If a suspicious file is detected, a warning popup will appear, and the file's execution will be blocked.
+
+## Uninstallation
+
+1.  **Stop the Service:**
+
+    ```bash
+    python unicode_spoof_detector.py stop
+    ```
+
+2.  **Remove the Service:**
+
+    ```bash
+    python unicode_spoof_detector.py remove
+    ```
+
+3.  **Delete the Repository:**
+
+    ```bash
+    cd ..
+    rm -rf unicode-spoof-detector
+    ```
+
+## Customization
+
+*   **`suspicious_unicode_patterns`:** You can modify the regular expressions in this list within the `UnicodeSpoofDetector` class to refine the Unicode character detection.
+*   **`dangerous_extensions`:** This list contains the file extensions considered potentially dangerous. You can add or remove extensions as needed.
+*   **`download_folder`:** The default monitored folder is the user's Downloads directory. You can change this by passing a different path to the `UnicodeSpoofDetector` constructor.
+
+## Issues
+
+If you encounter any issues or have suggestions for improvements, please open an issue on GitHub. When reporting an issue, please provide:
+
+*   **Steps to reproduce the issue.**
+*   **The operating system you are using.**
+*   **Any relevant error messages or logs.**
+
+## Contributions
+
+Contributions are welcome! If you would like to contribute to this project, please follow these steps:
+
+1.  **Fork the repository.**
+2.  **Create a new branch for your feature or bug fix.**
+3.  **Make your changes and commit them.**
+4.  **Push your changes to your fork.**
+5.  **Submit a pull request.**
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Code Example (Customization)
 
 <details>
-<summary><strong>Customization</strong></summary>
+<summary>Click to expand customization example</summary>
 
-### Change the Monitored Directory
-By default, the tool monitors the `Downloads` folder. To monitor additional or different directories:
-1. Open the `unicode-spoof-detector.py` file.
-2. Locate the `self.download_folder` variable in the `UnicodeSpoofDetector` class.
-3. Modify it to include the path of your desired directory:
-   ```python
-   self.download_folder = os.path.expanduser('~\\Desktop')
+```python
+class UnicodeSpoofDetector:
+    def __init__(self, download_folder=None):
+        self.download_folder = download_folder or os.path.expanduser('~\\Downloads')
+        self.suspicious_unicode_patterns = [
+            r'[\u200B-\u200D\u2060\u2061\u2062\u2063\u2064]', # Zero-width spaces and other invisible characters
+            r'[\u202A-\u202E]', # Right-to-left and left-to-right overrides
+            r'[^\x00-\x7F]', # Any character outside basic ASCII
+            r'[\u2028\u2029]', # Line and paragraph separators
+            r'[\uFFF0-\uFFFF]', # Specials
+            r'[\u061C]' # Arabic Letter Mark
+        ]
+        self.dangerous_extensions = [
+            '.exe', '.bat', '.cmd', '.vbs', '.ps1',
+            '.msi', '.scr', '.jar', '.js', '.pif', '.cpl' #Added more
+        ]
+        # ... rest of the class
