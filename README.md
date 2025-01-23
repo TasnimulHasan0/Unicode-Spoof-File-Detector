@@ -33,6 +33,18 @@ The **Unicode Spoof File Detector** is a Python-based security tool that monitor
 
 ---
 
+<details>
+<summary><strong>Customization</strong></summary>
+
+### Change the Monitored Directory
+By default, the tool monitors the `Downloads` folder. To monitor additional or different directories:
+1. Open the `unicode-spoof-detector.py` file.
+2. Locate the `self.download_folder` variable in the `UnicodeSpoofDetector` class.
+3. Modify it to include the path of your desired directory:
+   ```python
+   self.download_folder = os.path.expanduser('~\\Desktop')
+---
+
 ## Prerequisites
 1. **Python 3.8 or later** installed on your system.
 2. Required Python libraries:
