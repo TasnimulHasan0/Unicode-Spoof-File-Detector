@@ -1,3 +1,3 @@
-pywin32
 python-magic
 watchdog
+pywin32; sys_platform == 'win32'
