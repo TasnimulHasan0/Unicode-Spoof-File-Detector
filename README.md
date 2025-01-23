@@ -13,7 +13,7 @@ This Python script detects and blocks potentially dangerous files that use Unico
 
 ## Installation for Windows Users
 
-**1. Install Python (Admin):**
+**1. Install Python:**
 
 *   Download Python: https://www.python.org/downloads/windows/ (Check "Add Python 3.x to PATH")
 
