@@ -45,14 +45,3 @@ By default, the tool monitors the `Downloads` folder. To monitor additional or d
 3. Modify it to include the path of your desired directory:
    ```python
    self.download_folder = os.path.expanduser('~\\Desktop')
-   
-<details>
-<summary><strong>Prerequisites</strong></summary>
-<details>
-<summary><strong>Requirements</strong></summary>
-### Python Requirements
-1. **Python 3.8 or later** installed on your system.
-2. Install the required Python libraries:
-   ```bash
-   pip install pywin32 python-magic
-   
