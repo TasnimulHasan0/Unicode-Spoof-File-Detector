@@ -48,7 +48,8 @@ By default, the tool monitors the `Downloads` folder. To monitor additional or d
    
 <details>
 <summary><strong>Prerequisites</strong></summary>
-
+<details>
+<summary><strong>Requirements</strong></summary>
 ### Python Requirements
 1. **Python 3.8 or later** installed on your system.
 2. Install the required Python libraries:
