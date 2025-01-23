@@ -2,6 +2,8 @@
 
 The **Unicode Spoof File Detector** is a Python-based security tool that monitors your system for files containing suspicious Unicode characters, often used to spoof file extensions. It blocks these files from execution and alerts the user, helping to prevent malicious activity.
 
+---
+
 ## Features
 - Detects filenames with suspicious Unicode characters (e.g., zero-width spaces, bidirectional controls).
 - Verifies that file types match their extensions (e.g., `.exe` files are actually executables).
@@ -43,24 +45,4 @@ By default, the tool monitors the `Downloads` folder. To monitor additional or d
 3. Modify it to include the path of your desired directory:
    ```python
    self.download_folder = os.path.expanduser('~\\Desktop')
----
-<details>
-<summary><strong>Add/Remove Dangerous File Extensions</strong></summary>
-
-### Customize Dangerous File Extensions
-To modify the list of file extensions considered dangerous:
-
-1. Open the `unicode-spoof-detector.py` file.
-2. Locate the `self.dangerous_extensions` list inside the `UnicodeSpoofDetector` class.
-3. Add or remove extensions as needed.
-
-For example:
-```python
-self.dangerous_extensions = ['.exe', '.bat', '.cmd', '.vbs', '.ps1', '.msi', '.scr', '.jar', '.js']
-
-## Prerequisites
-1. **Python 3.8 or later** installed on your system.
-2. Required Python libraries:
-   ```bash
-   pip install pywin32 python-magic
    
