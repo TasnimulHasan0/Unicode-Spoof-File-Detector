@@ -104,26 +104,3 @@ Contributions are welcome! If you would like to contribute to this project, plea
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
-
-## Code Example (Customization)
-
-<details>
-<summary>Click to expand customization example</summary>
-
-```python
-class UnicodeSpoofDetector:
-    def __init__(self, download_folder=None):
-        self.download_folder = download_folder or os.path.expanduser('~\\Downloads')
-        self.suspicious_unicode_patterns = [
-            r'[\u200B-\u200D\u2060\u2061\u2062\u2063\u2064]', # Zero-width spaces and other invisible characters
-            r'[\u202A-\u202E]', # Right-to-left and left-to-right overrides
-            r'[^\x00-\x7F]', # Any character outside basic ASCII
-            r'[\u2028\u2029]', # Line and paragraph separators
-            r'[\uFFF0-\uFFFF]', # Specials
-            r'[\u061C]' # Arabic Letter Mark
-        ]
-        self.dangerous_extensions = [
-            '.exe', '.bat', '.cmd', '.vbs', '.ps1',
-            '.msi', '.scr', '.jar', '.js', '.pif', '.cpl' #Added more
-        ]
-        # ... rest of the class
