@@ -128,7 +128,7 @@ Contributions are welcome! If you would like to contribute to this project, plea
 5.  **Submit a pull request.**
 
 </details>
-[![I got this idea from this video:](https://img.youtube.com/vi/nIcRK4V_Zvc/0.jpg)](https://youtu.be/nIcRK4V_Zvc)
+[![I got this idea from this video:][https://img.youtube.com/vi/nIcRK4V_Zvc/0.jpg](https://youtu.be/nIcRK4V_Zvc)
 
 ## License
 
