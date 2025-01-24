@@ -1,3 +1,5 @@
+# AS OF NOW, IT DOESN'T WORK. NEEDS MORE DEBUGGING.
+
 # Unicode Spoof File Detector
 
 This Python script detects and blocks potentially dangerous files that use Unicode characters to spoof file extensions, commonly used in phishing and malware distribution. It monitors the Downloads folder and alerts the user if a suspicious file is found.
